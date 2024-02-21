@@ -1,0 +1,47 @@
+import time
+import unittest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+
+driver = webdriver.Chrome()
+driver.get("https://demoqa.com/automation-practice-form")
+driver.find_element(By.ID, "firstName").send_keys("Noreen")
+# time.sleep(5)
+driver.find_element(By.ID, "lastName").send_keys("Fatima")
+# time.sleep(5)
+driver.find_element(By.ID, "userEmail").send_keys("test@mailinator.com")
+# time.sleep(5)
+driver.find_element(By.CSS_SELECTOR, "label[for='gender-radio-2']").click()
+# time.sleep(5)
+driver.find_element(By.ID, "userNumber").send_keys("03214567980")
+# time.sleep(3)
+driver.find_element(By.ID, "dateOfBirthInput").click()
+# time.sleep(3)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/form/div[5]/div[2]/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/select/option[98]").click()
+# time.sleep(3)
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/form/div[5]/div[2]/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[1]/select/option[2]").click()
+driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/form/div[5]/div[2]/div[2]/div[2]/div/div/div[2]/div[2]/div[3]/div[6]").click()
+driver.find_element(By.XPATH, "//*[@id='subjectsContainer']/div/div[1]").click()
+element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".subjects-auto-complete__input>input[id='subjectsInput'][type='text']")))
+element.send_keys("Computer Science")
+element.send_keys(Keys.ENTER)
+# time.sleep(5)
+driver.find_element(By.CSS_SELECTOR, "label[for='hobbies-checkbox-3']").click()
+file_input = driver.find_element(By.ID,'uploadPicture' )
+file_input.send_keys("C:/Users/DELL/Downloads/Upload.png")
+# time.sleep(5)
+driver.find_element(By.ID, "currentAddress").send_keys("Maqsoodlabs")
+# time.sleep(5)
+dropdown = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[id='react-select-3-input']")))
+dropdown.send_keys("Haryana")
+dropdown.send_keys(Keys.ENTER)
+# time.sleep(5)
+dropdown = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[id='react-select-4-input']")))
+dropdown.send_keys("Karnal")
+dropdown.send_keys(Keys.ENTER)
+# time.sleep(5)
+element.submit()
+# time.sleep(5)
